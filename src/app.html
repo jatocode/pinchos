@@ -2,10 +2,20 @@
   <h1>${message}</h1>
   <h2>Dryck</h2>
   <ul>
-    <li repeat.for="dryck of drycker">${dryck}</li>
+    <li repeat.for="dryck of dryckenheter">
+      <button click.delegate="oka(dryck)">+</button>
+      ${dryck.namn} 
+      ${dryck.antal}
+      <button click.delegate="minska(dryck)">-</button>
+    </li>
   </ul>
   <h2>Mat</h2>
   <ul>
-    <li repeat.for="matratt of matratter">${matratt}</li>
+    <li repeat.for="matratt of matenheter">
+      <button click.delegate="oka(matratt)">+</button>
+        ${matratt.namn}
+        ${matratt.antal}
+      <button click.delegate="minska(matratt)">-</button>
+    </li>
   </ul>
 </template>
