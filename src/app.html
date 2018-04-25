@@ -18,4 +18,14 @@
       <button click.delegate="minska(matratt)">-</button>
     </li>
   </ul>
+  <span>
+    Ditt namn: <input type="text" value.two-way="namn" />
+    <button click.delegate="bestall()">Beställ</button>
+  </span>
+  <span repeat.for="order of orders">
+    <br/>
+    <span>${order.namn}</span>
+    <span repeat.for="dryck of order.dryck">${dryck.namn}:${dryck.antal}</span>
+    <span repeat.for="mat of order.mat">${mat.namn}:${mat.antal}</span>
+  </span>
 </template>
