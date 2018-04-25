@@ -1,24 +1,25 @@
 <template>
+  <require from="./styles.css"></require>
   <h1>${message}</h1>
   <h2>Dryck</h2>
   <ul>
     <li repeat.for="dryck of dryckenheter">
-      <button click.delegate="oka(dryck)">+</button>
+      <button click.delegate="minska(dryck)">-</button>
       ${dryck.namn} 
       ${dryck.antal}
-      <button click.delegate="minska(dryck)">-</button>
+      <button click.delegate="oka(dryck)">+</button>
     </li>
   </ul>
   <h2>Mat</h2>
   <ul>
     <li repeat.for="matratt of matenheter">
-      <button click.delegate="oka(matratt)">+</button>
+        <button click.delegate="minska(matratt)">-</button>
         ${matratt.namn}
         ${matratt.antal}
-      <button click.delegate="minska(matratt)">-</button>
+        <button click.delegate="oka(matratt)">+</button>
     </li>
   </ul>
-  <span>
+  <span class="namn">
     Ditt namn: <input type="text" value.two-way="namn" />
     <button click.delegate="bestall()">Beställ</button>
   </span>
