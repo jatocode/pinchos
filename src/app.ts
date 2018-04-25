@@ -5,12 +5,16 @@ export class App {
   message = 'Tyras Pinchos!';
   namn = "";
   orders = [];
-
+  
   drycker = ["Mjölk", "Vatten", "Saft", "Coca cola", "Sprite"];
   matratter = ["Pizza", "Minihamburgare","Köttbullar", "Kycklingspett", "Risotto", "Soppa", "Enchiladas", "Nachos"];
 
   dryckenheter = this.drycker.map(x => new Enhet(x));
   matenheter = this.matratter.map(x => new Enhet(x));
+
+  constructor() {
+    this.bestallningar();
+  }
 
   public oka(en:Enhet) {
     en.antal++;
@@ -25,14 +29,30 @@ export class App {
                  "dryck": this.dryckenheter.filter(x => x.antal > 0),
                  "mat": this.matenheter.filter(x => x.antal > 0) 
                 };
-    this.orders.push(order);
 
     let client = new HttpClient();
     client.fetch('http://localhost:8090/orders', {
       method: 'post',
       body: json(order)
-    }).catch(error => console.log(error));
+    })
+    .then(response => response.json())
+    .then(data => {
+      this.orders = data;
+      this.namn = "";
+      this.dryckenheter = this.drycker.map(x => new Enhet(x));
+      this.matenheter = this.matratter.map(x => new Enhet(x));
+    })
+    .catch(error => console.log(error));
 
+  }
+
+  public bestallningar() {
+    let client = new HttpClient();
+    client.fetch('http://localhost:8090/orders')
+    .then(response => response.json())
+    .then(data => {
+      this.orders = data;
+    });
   }
 
 }

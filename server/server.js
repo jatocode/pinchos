@@ -23,7 +23,6 @@ app.use(bodyParser.json());
 app.post('/orders', (req, res) => {
   orders.push(req.body);
   res.send(JSON.stringify(orders));
-  console.log(orders);
 });
 
 app.get('/orders', (req, res) => {
