@@ -1,4 +1,6 @@
 import { Enhet } from "./enhet";
+import {HttpClient, json} from 'aurelia-fetch-client';
+
 export class App {
   message = 'Tyras Pinchos!';
   namn = "";
@@ -25,9 +27,12 @@ export class App {
                 };
     this.orders.push(order);
 
-    //this.dryckenheter.forEach(x => x.antal = 0);
-    //this.matenheter.forEach(x => x.antal = 0);
-    this.namn = "";
+    let client = new HttpClient();
+    client.fetch('http://localhost:8090/orders', {
+      method: 'post',
+      body: json(order)
+    }).catch(error => console.log(error));
+
   }
 
 }
