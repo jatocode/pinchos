@@ -6,8 +6,8 @@ export class App {
   namn = "";
   orders = [];
   
-  drycker = ["Mjölk", "Vatten", "Saft", "Coca cola", "Sprite"];
-  matratter = ["Pizza", "Minihamburgare","Köttbullar", "Kycklingspett", "Risotto", "Soppa", "Enchiladas", "Nachos"];
+  drycker = ["Saft", "Coca cola", "Fanta"];
+  matratter = ["Chips", "Pizza", "Kycklingspett", "Enchiladas"];
 
   dryckenheter = this.drycker.map(x => new Enhet(x));
   matenheter = this.matratter.map(x => new Enhet(x));

@@ -1,23 +1,23 @@
 <template>
   <require from="./styles.css"></require>
-  <div>
+  <div class="meny">
   <h1>${message}</h1>
-  <h2 class="typ">Dryck</h2>
   <ul>
-    <li class="enhet" repeat.for="dryck of dryckenheter">
-      <button class="minus" if.bind="dryck.antal > 0" click.delegate="minska(dryck)">-</button>
-      ${dryck.namn} 
-      ${dryck.antal}
-      <button class="plus" click.delegate="oka(dryck)">+</button>
+      <div class="typ">DRYCK</div>
+      <li class="enhet" repeat.for="enhet of dryckenheter">
+      <div class="enhetsrubrik">${enhet.namn.toUpperCase()}</div>
+      <button class="minus knapp" show.bind="enhet.antal > 0" click.delegate="minska(enhet)">-</button>
+      <button class="plus knapp" click.delegate="oka(enhet)">+</button>
+      <div show.bind="enhet.antal > 0" class="antal">${enhet.antal}</div>
     </li>
   </ul>
-  <h2 class="typ">Mat</h2>
   <ul>
-    <li class="enhet" repeat.for="matratt of matenheter">
-        <button class="minus" if.bind="dryck.antal > 0" click.delegate="minska(matratt)">-</button>
-        ${matratt.namn}
-        ${matratt.antal}
-        <button class="plus" click.delegate="oka(matratt)">+</button>
+      <div class="typ">MAT</div>
+      <li class="enhet" repeat.for="enhet of matenheter">
+        <div class="enhetsrubrik">${enhet.namn.toUpperCase()}</div>
+        <button class="minus knapp" show.bind="enhet.antal > 0" click.delegate="minska(enhet)">-</button>
+        <button class="plus knapp" click.delegate="oka(enhet)">+</button>
+        <div show.bind="enhet.antal > 0" class="antal">${enhet.antal}</div>
     </li>
   </ul>
   <span class="namn">
