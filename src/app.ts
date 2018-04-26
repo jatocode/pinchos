@@ -2,11 +2,11 @@ import { Enhet } from "./enhet";
 import {HttpClient, json} from 'aurelia-fetch-client';
 
 export class App {
-  message = 'Tyras Pinchos!';
+  message = 'TYRAS PINCHOSKALAS!';
   namn = "";
   orders = [];
   
-  drycker = ["Saft", "Coca cola", "Fanta"];
+  drycker = ["Mjölk", "Vatten"];
   matratter = ["Chips", "Pizza", "Kycklingspett", "Enchiladas"];
 
   dryckenheter = this.drycker.map(x => new Enhet(x));
