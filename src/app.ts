@@ -5,7 +5,8 @@ export class App {
   message = 'TYRAS PINCHOSKALAS!';
   namn = "";
   orders = [];
-  
+  bestallbart = false;
+
   drycker = ["Mjölk", "Vatten"];
   matratter = ["Chips", "Pizza", "Kycklingspett", "Enchiladas"];
 

@@ -25,6 +25,7 @@ ul {
 
 .namn {
   font-size: 2em;
+  width: 300px;
 }
 
 .enhet {
@@ -93,5 +94,19 @@ ul {
   font-size: 70px;
   opacity: 0.7;
   border-radius: 50%;  
+}
+
+.order {
+  border: 2px solid black;
+}
+
+.bestallknapp {
+  position: relative;
+  color: black;
+  background-color: gold;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 28px; 
 }
 

@@ -21,10 +21,13 @@
         <div show.bind="enhet.antal > 0" class="antal">${enhet.antal}</div>
     </li>
   </ul>
-  <span class="namn">
-    Ditt namn: <input type="text" value.two-way="namn" />
-    <button click.delegate="bestall()">Beställ</button>
-  </span>
+  <div class="order">
+      <span class="namn">
+      Ditt namn: 
+      <input class="namn" type="text" value.two-way="namn"/>
+      <button class="bestallknapp" enabled.bind="bestallbart" click.delegate="bestall()">Beställ</button>
+    </span>
+  </div>
   <br/>
   <span repeat.for="order of orders">
     <br/>
