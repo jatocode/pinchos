@@ -1,22 +1,23 @@
 <template>
   <require from="./styles.css"></require>
+  <div>
   <h1>${message}</h1>
-  <h2>Dryck</h2>
+  <h2 class="typ">Dryck</h2>
   <ul>
-    <li repeat.for="dryck of dryckenheter">
-      <button click.delegate="minska(dryck)">-</button>
+    <li class="enhet" repeat.for="dryck of dryckenheter">
+      <button class="minus" if.bind="dryck.antal > 0" click.delegate="minska(dryck)">-</button>
       ${dryck.namn} 
       ${dryck.antal}
-      <button click.delegate="oka(dryck)">+</button>
+      <button class="plus" click.delegate="oka(dryck)">+</button>
     </li>
   </ul>
-  <h2>Mat</h2>
+  <h2 class="typ">Mat</h2>
   <ul>
-    <li repeat.for="matratt of matenheter">
-        <button click.delegate="minska(matratt)">-</button>
+    <li class="enhet" repeat.for="matratt of matenheter">
+        <button class="minus" if.bind="dryck.antal > 0" click.delegate="minska(matratt)">-</button>
         ${matratt.namn}
         ${matratt.antal}
-        <button click.delegate="oka(matratt)">+</button>
+        <button class="plus" click.delegate="oka(matratt)">+</button>
     </li>
   </ul>
   <span class="namn">
@@ -30,4 +31,5 @@
     <span repeat.for="dryck of order.dryck">${dryck.namn}:${dryck.antal}</span>
     <span repeat.for="mat of order.mat">${mat.namn}:${mat.antal}</span>
   </span>
+  </div>
 </template>
