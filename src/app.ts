@@ -1,59 +1,15 @@
-import { Enhet } from "./enhet";
-import {HttpClient, json} from 'aurelia-fetch-client';
+import { RouterConfiguration, Router } from 'aurelia-router';
+import {PLATFORM} from 'aurelia-pal';
 
 export class App {
-  message = 'TYRAS PINCHOSKALAS!';
-  namn = "";
-  orders = [];
-  bestallbart = false;
+  router: Router;
 
-  drycker = ["Mjölk", "Vatten"];
-  matratter = ["Chips", "Pizza", "Kycklingspett", "Enchiladas"];
-
-  dryckenheter = this.drycker.map(x => new Enhet(x));
-  matenheter = this.matratter.map(x => new Enhet(x));
-
-  constructor() {
-    this.bestallningar();
+  configureRouter(config: RouterConfiguration, router: Router): void {
+    this.router = router;
+    config.title = 'Tyra Pinchos!';
+    config.map([
+      { route: ['', 'home'], name: 'home',   moduleId: PLATFORM.moduleName('meny') },
+      { route: 'orders',     name: 'orders', moduleId: PLATFORM.moduleName('orders') , nav: true, title: 'Orders' },
+    ]);
   }
-
-  public oka(en:Enhet) {
-    en.antal++;
-  }
-
-  public minska(en:Enhet) {
-    en.antal == 0? en.antal = 0: en.antal--;
-  }
-
-  public bestall() {
-    let order = {"namn": this.namn,
-                 "dryck": this.dryckenheter.filter(x => x.antal > 0),
-                 "mat": this.matenheter.filter(x => x.antal > 0) 
-                };
-
-    let client = new HttpClient();
-    client.fetch('http://localhost:8090/orders', {
-      method: 'post',
-      body: json(order)
-    })
-    .then(response => response.json())
-    .then(data => {
-      this.orders = data;
-      this.namn = "";
-      this.dryckenheter = this.drycker.map(x => new Enhet(x));
-      this.matenheter = this.matratter.map(x => new Enhet(x));
-    })
-    .catch(error => console.log(error));
-
-  }
-
-  public bestallningar() {
-    let client = new HttpClient();
-    client.fetch('http://localhost:8090/orders')
-    .then(response => response.json())
-    .then(data => {
-      this.orders = data;
-    });
-  }
-
 }
