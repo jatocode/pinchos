@@ -8,8 +8,12 @@ export class App {
     this.router = router;
     config.title = 'Tyra Pinchos!';
     config.map([
-      { route: ['', 'home'], name: 'home',   moduleId: PLATFORM.moduleName('meny') },
-      { route: 'orders',     name: 'orders', moduleId: PLATFORM.moduleName('orders') , nav: true, title: 'Orders' },
+      { route: ['', 'home'], name: 'home',   
+        moduleId: PLATFORM.moduleName('meny') },
+      { route: 'orders',     name: 'orders', 
+        moduleId: PLATFORM.moduleName('orders'), nav: true, title: 'Orders' },
+      { route: 'bestallt',   name: 'bestallt', 
+        moduleId: PLATFORM.moduleName('bestallt') },
     ]);
   }
 }

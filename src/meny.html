@@ -25,15 +25,9 @@
       <span class="namn">
       Ditt namn: 
       <input class="namn" type="text" value.two-way="namn"/>
-      <button class="bestallknapp" enabled.bind="bestallbart" click.delegate="bestall()">Beställ</button>
+      <a route-href="route: bestallt" class="bestallknapp" click.delegate="bestall()">Beställ</a>
     </span>
   </div>
   <br/>
-  <span repeat.for="order of orders">
-    <br/>
-    <span>${order.namn}</span>
-    <span repeat.for="dryck of order.dryck">${dryck.namn}:${dryck.antal}</span>
-    <span repeat.for="mat of order.mat">${mat.namn}:${mat.antal}</span>
-  </span>
   </div>
 </template>

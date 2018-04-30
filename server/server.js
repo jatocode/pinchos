@@ -26,5 +26,6 @@ app.post('/orders', (req, res) => {
 });
 
 app.get('/orders', (req, res) => {
+  console.log('Request for orders. There are ' + orders.length + ' in the system');
   res.send(JSON.stringify(orders));
 });

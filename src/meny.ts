@@ -4,8 +4,7 @@ import {HttpClient, json} from 'aurelia-fetch-client';
 export class Meny {
   message = 'TYRAS PINCHOSKALAS!';
   namn = "";
-  orders = [];
-  bestallbart = false;
+  order;
 
   drycker = ["Mjölk", "Vatten"];
   matratter = ["Chips", "Pizza", "Kycklingspett", "Enchiladas"];
@@ -14,11 +13,10 @@ export class Meny {
   matenheter = this.matratter.map(x => new Enhet(x));
 
   constructor() {
-    this.bestallningar();
   }
 
   public oka(en:Enhet) {
-    en.antal++;
+    en.antal < 5? en.antal++: en.antal=5;
   }
 
   public minska(en:Enhet) {
@@ -26,34 +24,27 @@ export class Meny {
   }
 
   public bestall() {
-    let order = {"namn": this.namn,
+    this.order = {"namn": this.namn,
                  "dryck": this.dryckenheter.filter(x => x.antal > 0),
                  "mat": this.matenheter.filter(x => x.antal > 0) 
                 };
 
+    console.log(this.order);
+
     let client = new HttpClient();
-    client.fetch('http://localhost:8090/orders', {
+    client.fetch('http://tobias.local:8090/orders', {
       method: 'post',
-      body: json(order)
+      body: json(this.order)
     })
     .then(response => response.json())
     .then(data => {
-      this.orders = data;
       this.namn = "";
       this.dryckenheter = this.drycker.map(x => new Enhet(x));
       this.matenheter = this.matratter.map(x => new Enhet(x));
     })
     .catch(error => console.log(error));
 
-  }
-
-  public bestallningar() {
-    let client = new HttpClient();
-    client.fetch('http://localhost:8090/orders')
-    .then(response => response.json())
-    .then(data => {
-      this.orders = data;
-    });
+    return true;
   }
 
 }
