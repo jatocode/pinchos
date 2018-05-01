@@ -6,6 +6,11 @@ export class Orders {
   orders;
 
   async attached() {
+    // this.orders = await Order.hamtaOrder();
+    setInterval(() => { this.poll()}, 2000);
+  }
+
+  async poll() {
     this.orders = await Order.hamtaOrder();
   }
 }
