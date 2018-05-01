@@ -16,17 +16,6 @@ export class Order {
     });
   }
 
-  static async hamtaSenasteOrder() {
-    return new Promise((resolve, reject) => {
-      let client = new HttpClient();
-      client.fetch(SERVERURL)
-        .then(response => response.json())
-        .then(data => {
-          resolve(data[data.length -1]);
-        })
-    });
-  }
-
   static async bestall(order) {
     return new Promise((resolve, reject) => {
       let client = new HttpClient();
