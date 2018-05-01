@@ -1,8 +1,8 @@
 # Webapp med superenkel backend för att leka Pinchos!
 
 ## Installera lite jox
-npm install aurelia-cli -g
-npm install
+> npm install aurelia-cli -g
+> npm install
 
 ### Starta frontend
 > au run --watch
