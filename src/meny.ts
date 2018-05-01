@@ -21,13 +21,13 @@ export class Meny {
     en.antal == 0? en.antal = 0: en.antal--;
   }
 
-  public async bestall() {
+  public bestall() {
     this.order = {"namn": this.namn,
                  "dryck": this.dryckenheter.filter(x => x.antal > 0),
                  "mat": this.matenheter.filter(x => x.antal > 0) 
                 };
-                
-    await Order.bestall(this.order);
+
+    Order.bestall(this.order);
     
     this.namn = "";
     this.dryckenheter = this.drycker.map(x => new Enhet(x));
