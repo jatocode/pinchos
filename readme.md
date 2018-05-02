@@ -2,6 +2,7 @@
 
 ## Installera lite jox
 > npm install aurelia-cli -g
+
 > npm install
 
 ### Starta frontend
