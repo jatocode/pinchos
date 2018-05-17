@@ -16,6 +16,7 @@
       <div class="typ">MAT</div>
       <li class="enhet" repeat.for="enhet of matenheter">
         <div class="enhetsrubrik">${enhet.namn.toUpperCase()}</div>
+        <div><img class="enhetsbild" src="/img/${enhet.namn.toLowerCase()}.jpg" /> </div>
         <button class="minus knapp" show.bind="enhet.antal > 0" click.delegate="minska(enhet)">-</button>
         <button class="plus knapp" click.delegate="oka(enhet)">+</button>
         <div show.bind="enhet.antal > 0" class="antal">${enhet.antal}</div>

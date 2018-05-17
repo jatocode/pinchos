@@ -7,8 +7,8 @@ export class Meny {
   namn = "";
   order;
 
-  drycker = ["Mjölk", "Vatten"];
-  matratter = ["Chips", "Pizza", "Kycklingspett", "Enchiladas"];
+  drycker = ["Fanta", "Cocacola","Sodapop","Mjölk", "Vatten"];
+  matratter = ["PommesFrites", "Pizzaslice", "Kycklingspett", "Enchiladas","Brownie"];
 
   dryckenheter = this.drycker.map(x => new Enhet(x));
   matenheter = this.matratter.map(x => new Enhet(x));
