@@ -3,8 +3,9 @@
   <h1>Beställningar</h1>
   <span repeat.for="order of orders">
       <br/>
-      <h2>${order.namn}</h2>
+      <h2>Ordernummer: ${orders.length - $index}, ${order.namn}       <input type="checkbox"></h2>
       <ul><li repeat.for="dryck of order.dryck">${dryck.namn}:${dryck.antal}</li></ul>
       <ul><li repeat.for="mat of order.mat">${mat.namn}:${mat.antal}</li></ul>
+
   </span>
 </template>

@@ -26,7 +26,7 @@
       <span class="namn">
       Ditt namn: 
       <input class="namn" type="text" value.two-way="namn"/>
-      <a route-href="route: bestallt" class="bestallknapp" click.delegate="bestall()">Beställ</a>
+      <a route-href="route: bestallt" class="bestallknapp" show.bind="namn.length > 0" click.delegate="bestall()">Beställ</a>
     </span>
   </div>
   <br/>

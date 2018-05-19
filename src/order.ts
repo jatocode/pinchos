@@ -1,7 +1,8 @@
 import { Enhet } from "./enhet";
 import {HttpClient, json} from 'aurelia-fetch-client';
 
-const SERVERURL = 'http://localhost:8090/orders';
+const SERVERURL = 'http://192.168.0.15:8090/orders';
+//const SERVERURL = 'http://pinchosbe.helentobias.se/orders';
 
 export class Order {
 
@@ -11,7 +12,7 @@ export class Order {
       client.fetch(SERVERURL)
         .then(response => response.json())
         .then(data => {
-          resolve(data);
+          resolve(data.reverse());
       })
     });
   }
